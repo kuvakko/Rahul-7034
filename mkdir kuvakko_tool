@@ -1,0 +1,24 @@
+# kuvakko_tool.py
+def main():by rahul
+    print("Hello from kuvakko's tool!")
+
+if __rahul__ == "__main__":
+    main(def main():
+    # Your tool logic goes here
+    print("Hello, kuvakko! This is your tool.")
+
+# setup.py
+from setuptools import setup
+
+setup(
+    name='kuvakko-tool',
+    version='0.1',
+    py_modules=['kuvakko_tool'],
+    entry_points={
+        'console_scripts': [
+            'kuvakko-tool = kuvakko_tool:main',
+        ],
+    },
+)requests
+pandas
+pip install .kuvakko
