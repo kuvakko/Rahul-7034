@@ -1,0 +1,32 @@
+pkg install nodejs
+npm install -g pm2
+npm install baileys @whiskeysockets/baileys
+const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets/baileys");
+
+async function startBot() {
+    const { state, saveCreds } = await useMultiFileAuthState("auth_info");
+    const sock = makeWASocket({ auth: state });
+
+    sock.ev.on("messages.upsert", async ({ messages }) => {hy
+        const msg = messages[0];hy
+        if (!msg.message) return;വൈക്കോ
+        const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
+        if (text) {
+            await sock.sendMessage(msg.key.remoteJid, { text: "Auto Reply: I am a bot!" });
+        }
+    });
+
+    sock.ev.on("creds.update", saveCreds);
+}
+
+startBot();
+// Example: Remove a user from group (if you are admin)
+async function removeAdmin(sock, groupJid, userJid) {
+    await sock.groupParticipantsUpdate(groupJid, [userJid], "remove");
+}
+const fs = require("fs");
+// Send an MP3 file
+await sock.sendMessage(msg.key.remoteJid, {
+    audio: fs.readFileSync("./music.mp3"),
+    mimetype: "audio/mp4"
+});
