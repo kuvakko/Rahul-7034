@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Rahul: Kali Tool Installer for Termux
+
+echo "=============================="
+echo "      Rahul Kali Tool"
+echo "=============================="
+echo "Select a tool to install:"
+echo "1. Nmap"
+echo "2. Metasploit"
+echo "3. Hydra"
+echo "4. John the Ripper"
+echo "5. Nikto"
+echo "6. Exit"
+read -p "Your choice: " choice
+
+case $choice in
+  1)
+    pkg install nmap -y
+    echo "Nmap installed."
+    ;;
+  2)
+    pkg install unstable-repo -y
+    pkg install metasploit -y
+    echo "Metasploit installed."
+    ;;
+  3)
+    pkg install hydra -y
+    echo "Hydra installed."
+    ;;
+  4)
+    pkg install john -y
+    echo "John the Ripper installed."
+    ;;
+  5)
+    pkg install nikto -y
+    echo "Nikto installed."
+    ;;
+  6)
+    echo "Exiting Rahul tool."
+    exit 0
+    ;;
+  *)
+    echo "Invalid choice."
+    ;;
+esac
